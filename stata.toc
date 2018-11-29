@@ -1,0 +1,3 @@
+v 3
+d Ian Timaeus, London School of Hygiene & Tropical Medicine
+p convertCMC Convert century month codes to Stata dates
