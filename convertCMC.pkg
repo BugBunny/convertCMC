@@ -1,5 +1,13 @@
 v 3
 d convertCMC Convert century month codes to Stata dates
-d Ian Timaeus, London School of Hygiene & Tropical Medicine
+d {bf:Ian Timaeus, London School of Hygiene & Tropical Medicine}
+d convertCMC converts century month codes (i.e. dates coded as months since the
+d start of the year 1900), such as those produced by the Demographic and Health 
+d Surveys, into Stata dates, randomly imputing an exact day of the month to  
+d to each value. After installation, see help {bf:convertCMC}
+d
+d Distribution date: 20181129
+d
+d Support: email ian.timaeus@lshtm.ac.uk
 f convertCMC.ado
 f convertCMC.sthlp
