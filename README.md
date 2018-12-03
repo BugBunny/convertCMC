@@ -1,5 +1,5 @@
 # convertCMC
-Stata package to convert century month codes (CMCs) into Stata dates.
+*Stata* package to convert century month codes (CMCs) into *Stata* dates.
 
 CMCs (i.e. dates coded as months since the start of the year 1900), are widely used by the *Demographic and Health Surveys* program and others.
 
@@ -7,7 +7,7 @@ CMCs (i.e. dates coded as months since the start of the year 1900), are widely u
 
 `convertCMC` takes into account the length of each month and knows about leap years.
 
-N.B. The current release of `convertCMC` does **not** address the situation in which the two CMCs that are being differenced are the same. If the day of the month of each date is imputed independently, they can end up sequenced in either order, when this may in reality be impossible (e.g. a liveborn neonate cannot die any earlier in the month than his or her birthday).
+N.B. The current release of `convertCMC` does **not** address the situation in which two CMCs are being differenced that are the same. If the day of the month of each date is imputed independently, they can end up sequenced in either order, when this may be impossible in reality (e.g. a liveborn child cannot die any earlier in the month than his or her birthday).
 
 `convertCMC` can be installed from within *Stata* by:
 ```
