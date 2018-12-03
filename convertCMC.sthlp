@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.0.0  09mar2015}{...}
+{* *! version 1.1.0  28-Jan-2017}{...}
 {viewerjumpto "Syntax" "convertCMC##syntax"}{...}
 {viewerjumpto "Description" "convertCMC##description"}{...}
 {viewerjumpto "Remarks" "convertCMC##remarks"}{...}
