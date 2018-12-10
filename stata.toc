@@ -1,4 +1,3 @@
 v 3
 d Ian Timaeus, London School of Hygiene & Tropical Medicine
-p convertCMC program to convert century month codes to Stata dates
-p _gconvertCMC egen function to convert CMCs to Stata dates
+p convertCMC convert century month codes to Stata dates
