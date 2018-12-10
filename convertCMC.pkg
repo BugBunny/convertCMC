@@ -5,8 +5,8 @@ d convertCMC converts century month codes (i.e. dates coded as months
 d since the start of the year 1900), such as those produced by the  
 d Demographic and Health Surveys, into Stata dates, randomly imputing 
 d an exact day of the month to each value. It exists in two flavours,
-d as an {cmd:egen} function and as a command operating on a list of
-dvariables.
+d as an {cmd:egen} function creating a Stata date from a single CMC
+d and as a command operating on a list of variables.
 d After installation, see help {bf:convertCMC}
 d
 d Distribution date: 20181210
