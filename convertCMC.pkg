@@ -4,11 +4,14 @@ d {bf:Ian Timaeus, London School of Hygiene & Tropical Medicine}
 d convertCMC converts century month codes (i.e. dates coded as months  
 d since the start of the year 1900), such as those produced by the  
 d Demographic and Health Surveys, into Stata dates, randomly imputing 
-d an exact day of the month to each value. 
+d an exact day of the month to each value. It exists in two flavours,
+d as an {cmd:egen} function and as a command operating on a list of
+dvariables.
 d After installation, see help {bf:convertCMC}
 d
-d Distribution date: 20181129
+d Distribution date: 20181210
 d
 d Support: email ian.timaeus@lshtm.ac.uk
+f _gconvertCMC.ado
 f convertCMC.ado
 f convertCMC.sthlp
