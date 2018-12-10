@@ -1,7 +1,8 @@
 {smcl}
-{* *! version 1.1.0  28-Jan-2017}{...}
+{* *! version 2.0.0  10-Dec-2018}{...}
 {viewerjumpto "Syntax" "convertCMC##syntax"}{...}
 {viewerjumpto "Description" "convertCMC##description"}{...}
+{viewerjumpto "Options" "convertCMC##options"}{...}
 {viewerjumpto "Remarks" "convertCMC##remarks"}{...}
 {viewerjumpto "Examples" "convertCMC##examples"}{...}
 {title:Title}
@@ -13,36 +14,70 @@
 {marker syntax}{...}
 {title:Syntax}
 
+{bf:convertCMC} {cmd:egen} function:
+
 {p 8 17 2}
-{cmdab:convertCMC}
-{varlist}
-{ifin}
-{cmd:,} {it:options}
+{cmd:egen} {newvar} {cmd:= convertCMC(}{it:{help exp}}{cmd:)} {ifin} 
+[{cmd:,} {opt d:ayofmonth} {opt e:arliestdate} {opt l:atestdate}]
 
+{bf:convertCMC} command:
 
-{synoptset 20 tabbed}{...}
+{p 8 17 2}
+{cmd:convertCMC} {varlist}
+
+options for the {bf:convertCMC} {cmd:egen} function:
+
+{synoptset 22 tabbed}{...}
 {synopthdr}
 {synoptline}
 
-{synopt:{opt re:place}}converts the values of each variable in {varlist} into 
-the corresponding Stata dates.{p_end}
-{synopt:{opth gen:erate(newvar)}}expects a single variable in {varlist} and 
-generates a new variable that contains the corresponding Stata date.{p_end} 
+{synopt:{opth d:ayofmonth(varname)}}calculate the Stata date using values
+of varname for the day of the month{p_end} 
+{synopt:{opth e:arliestdate(varname)}}lower bound for the imputed date if it 
+falls in the same month and year as Stata date {varname}{p_end} 
+{synopt:{opth l:atestdate(varname)}}upper bound for the imputed date if it 
+falls in the same month and year as Stata date {varname}{p_end} 
 {synoptline}
 {p2colreset}{...}
-{p 4 6 2}
-Either {opt replace} or {opt generate} is required.
 
 
 {marker description}{...}
 {title:Description}
 
 {pstd}
-{cmd:convertCMC} converts century month codes (i.e. dates coded as months
-since the start of the year 1900), such as those in Demographic and Health
-Surveys data, into Stata {help datetime:dates}, randomly imputing an exact
-day of the month to each value.
+{cmd:convertCMC} converts one or more variables containing century month codes
+(i.e. dates coded as months since the start of the year 1900), such as those in
+Demographic and Health Surveys data, into Stata internal form
+{help datetime: dates}, randomly imputing the exact day of the month if it is 
+not known. The command version of {cmd:convertCMC} converts a list of CMC 
+variables into Stata dates {it:in situ}, imputing day, and does not allow 
+{help if} or {help in}. 
 
+
+{marker options}{...}
+{title:Options}
+{dlgtab:Main}
+{phang}
+{opt d:ayofmonth} If the day of the month of the date represented by 
+the CMC code applies is stored in another variable specified by 
+{opt dayofmonth}, the {bf:convertCMC} {cmd:egen} function uses it to calculate
+an exact date, rather than imputing a value for day.
+
+{phang}
+{opt e:arliestdate} If two events occur in the same month, one may constrain
+how early in the month the other can occur. For example, a baby cannot die
+before his or her birthday. If the former date is supplied in a Stata date 
+variable specified by {opt earliestdate}, the {bf:convertCMC} {cmd:egen}
+function imputes a day for the latter date that falls either on the same day or 
+later in the month.
+
+{phang}
+{opt l:atestdate} If two events occur in the same month, one may also constrain
+how late in the month the other can occur. For example, a woman can only report
+events that occur before she is interviewed. If the former date is supplied 
+in a Stata date variable specified by {opt lastestdate}, the {bf:convertCMC}
+{cmd:egen} function imputes a day for the latter date that falls either on the
+same day or earlier in the month.
 
 {marker remarks}{...}
 {title:Remarks}
@@ -70,23 +105,29 @@ as age in completed years).
 about leap years.
 
 {pstd}
-{cmd:convertCMC} uses {help runiform} in the imputation of days of the month.
+{cmd:convertCMC} uses random numbers in the imputation of days of the month.
 If you wish to produce reproducible dates, it is your responsibility 
 to {help set seed:seed} Stata's random number generator before calling 
-{cmd:convertCMC}.
+the program.
 
 {pstd}
-In both {opt generate} and {opt replace} modes, any variable to which 
-{cmd:convertCMC} assigns Stata dates also has its display
-{help datetime display formats:format} set to {cmd:%td}. 
+Any variable to which {cmd:convertCMC} assigns a Stata internal form date 
+also has its display {help datetime display formats:format} set to {cmd:%td}.
+
+{pstd}
+This program does not carry out any checks on the validity of the data 
+supplied to it. Missing or impossible input data will produce missing values in
+{newvar}.
 
 
 {marker examples}{...}
 {title:Examples}
 
-{phang}{cmd:. convertCMC v008 v011 v211, replace}{p_end}
+{phang}{cmd:. egen date_interview = convertCMC(v008), day(v016)}
 
-{phang}{cmd:. convertCMC v011, gen(dateofbirth)}{p_end}
+{phang}{cmd:. egen date_marriage = convertCMC(v509), latest(date_interview)}
+
+{phang}{cmd:. convertCMC v008 v011 v211}
 
 
 {title:Author}
