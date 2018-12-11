@@ -10,7 +10,7 @@
 *! version 2.0  10-Dec-2018
 *
 program define _gconvertCMC
-	version 13
+	version 10
 	syntax newvarname=/exp [if] [in] [, Dayofmonth(varname numeric) ///
 		Earliestdate(varname numeric) Latestdate(varname numeric)]
 	marksample touse, novarlist
@@ -40,7 +40,7 @@ program define _gconvertCMC
 				replace `maxd' = day(`latestdate') ///
 					if `yr'==year(`latestdate') & `mo'==month(`latestdate')
 			}		
-			gen int `day' = floor(`start'+(`maxd'-`start'+1)*runiform())
+			gen int `day' = floor(`start'+(`maxd'-`start'+1)*uniform())
 		}
 	* ignore user-supplied type
 	gen long `varlist' = mdy(`mo', `day', `yr') if `touse'
