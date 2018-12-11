@@ -9,7 +9,7 @@
 *! version 2.0  10-Dec-2018
 *
 program define convertCMC
-	version 10
+	version 13
 	syntax varlist(min=1 numeric)
 	tokenize `varlist'
 	quietly {
@@ -29,7 +29,7 @@ program define convertCMC
 		replace `maxd' = 28 if `maxd'==29 & mod(`yr',100)==0 /*
 			*/ & mod(`yr',400)!=0
 		recast long `s_date'
-		replace `s_date' = mdy(`mo', floor(1+`maxd'*uniform()), `yr')
+		replace `s_date' = mdy(`mo', floor(1+`maxd'*runiform()), `yr')
 		* assign default date format to Stata date variables
 		format `s_date' %td
 		macro shift
