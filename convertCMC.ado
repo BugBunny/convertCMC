@@ -6,7 +6,7 @@
 *
 * Author: Ian Timaeus, LSHTM (ian.timaeus@lshtm.ac.uk)
 * Initiated: 7-Mar-2015
-*! version 3.0  30-Sep-2019
+*! version 2.1  30-Sep-2019
 *
 program define convertCMC
 	version 10
