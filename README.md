@@ -13,7 +13,7 @@ The `convertCMC` `egen` function can also address the situation in which the day
 
 `convertCMC` can be installed from within *Stata* by:
 ```
-net install convertCMC, from(https://raw.githubusercontent.com/bugbunny/convertCMC/gh-pages)
+net install convertCMC, from(https://raw.githubusercontent.com/bugbunny/convertCMC/master)
 ```
 
 DOI: [10.5281/zenodo.3557305](https://doi.org/10.5281/zenodo.3557305)
