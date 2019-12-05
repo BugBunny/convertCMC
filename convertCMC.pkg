@@ -9,7 +9,7 @@ d as an {cmd:egen} function creating a Stata date from a single CMC
 d and as a command operating on a list of variables.
 d After installation, see help {bf:convertCMC}
 d
-d Distribution date: 20190930
+d Distribution-Date: 30sep2019
 d
 d Support: email ian.timaeus@lshtm.ac.uk
 f _gconvertCMC.ado
