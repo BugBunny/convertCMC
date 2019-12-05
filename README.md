@@ -15,3 +15,5 @@ The `convertCMC` `egen` function can also address the situation in which the day
 ```
 net install convertCMC, from(https://bugbunny.github.io/convertCMC)
 ```
+
+DOI: [10.5281/zenodo.3557305](https://doi.org/10.5281/zenodo.3557305)
