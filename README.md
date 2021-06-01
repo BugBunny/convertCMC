@@ -16,4 +16,4 @@ The `convertCMC` `egen` function can also address the situation in which the day
 net install convertCMC, from(https://raw.githubusercontent.com/bugbunny/convertCMC/master)
 ```
 
-DOI: [10.5281/zenodo.3557305](https://doi.org/10.5281/zenodo.3557305)
+[![DOI](https://zenodo.org/badge/159652446.svg)](https://zenodo.org/badge/latestdoi/159652446)
